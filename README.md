@@ -1,5 +1,5 @@
 # crying-at-cu
-An interactive map of Columbia where users can drop a pin of a place where they have cried in public and write why.
+An interactive map of Columbia University where users can drop a pin at a place where they have cried in public and write why.
 
 ## Demo
 Install dependencies:
