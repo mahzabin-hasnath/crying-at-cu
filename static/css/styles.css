@@ -8,7 +8,7 @@ html, body, #mapid {
 }
 
 #icon {
-  padding-left: 25px;
+  text-align: center;
 }
 
 #counter {
@@ -42,16 +42,26 @@ html, body, #mapid {
   font-family: "Source Sans Pro";
 }
 
-.orientation {
-  top: 70px;
+.orientation-button {
+  top: 20px;
   margin-left: 20px;
   cursor: pointer;
 }
 
-.orientation2 {
-  top: 110px;
+.orientation-box {
+  top: 100px;
   background-color: white;
   width: 250px;
   padding: 15px;
   margin-left: 20px;
+}
+
+.orientation-footer {
+  bottom: 20px;
+  margin-left: 20px;
+}
+
+#footer {
+  text-decoration:none;
+  color: inherit;
 }
