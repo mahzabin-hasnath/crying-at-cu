@@ -19,12 +19,14 @@
   <body>
     <div id="mapid"></div>
 
-    <h1 id="header" class="overlay">Crying @ CU</h1>
-    <button type="button" id="button" class="btn btn-light overlay orientation bodytext">about <i class="fa fa-arrow-down" aria-hidden="true"></i></button>
-    <div id="menu" class="overlay orientation2">
-      <p class="bodytext">An emotional map of Columbia's student body.</p>
-      <p class="bodytext">Click through the markers to browse other people's stories and <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
+    <button type="button" id="button" class="btn btn-light overlay orientation-button bodytext"><h1>Crying @ CU</h1></button>
+    <div id="menu" class="overlay orientation-box">
+      <p class="bodytext">A geospatial storytelling platform for life's emotional moments at Columbia University.</p>
+      <p class="bodytext">Click through the pins to browse other people's stories and <a href="{{ url_for('addpin') }}">add your own</a> to the map.</p>
     </div>
+
+    <a id="footer" href="https://github.com/mahzabin-hasnath/"><i class="fab fa-github overlay orientation-footer"></i></a>
+
 
 
     <!--BOOTSTRAP SCRIPTS-->
@@ -57,14 +59,11 @@
         $( "#menu" ).toggle();
       });
 
-      var icon2 = '<button id="react" class="btn btn-outline-primary btn-sm">\
+      var icon = '<button id="react" class="btn btn-outline-primary btn-sm">\
                     <div class="row">\
                       <div id="icon" class="col-md-1">\
                         <i class="fas fa-heart"></i>\
                       </div>\
-                      <div id="counter" class="col-md-1">\
-                        (0)\
-                      <div>\
                     </div>\
                   </button>'
 
@@ -72,7 +71,7 @@
       function renderData() {
         $.getJSON("/pindata", function(obj) {
             var markers = obj.data.map(function(arr) {
-              return L.marker([arr[0], arr[1]]).bindPopup("<b>I cried @ "+ arr[3] + "</b> <br><br>" + arr[2] + "<br><br>" + icon2);
+              return L.marker([arr[0], arr[1]]).bindPopup("<b>I cried @ "+ arr[3] + "</b> <br><br>" + arr[2] + "<br><br>" + icon);
           });
         layer = L.layerGroup(markers);
         mymap.addLayer(layer);
@@ -86,25 +85,26 @@
         });
       }, 500);
 
+
+      $(function() {renderData();})
+
+      $('#mapid').on('click', '#react', function() {
+        console.log('hi');
+        document.getElementById("react").classList.remove('btn-outline-primary');
+        document.getElementById("react").classList.add('btn-primary');
+      });
+
       // rendering pins with clustering - might incorporate this later
       // var markerGroup = L.markerClusterGroup();
       // function renderData() {
       //   $.getJSON( "/pindata", function(obj) {
       //     var markers = obj.data.map(function(arr) {
       //       var marker = L.marker([arr[0], arr[1]]).bindPopup("<b>I cried @ "+ arr[3] + "</b> <br><br>" + arr[2] + "<br><br>" + icon2);
-  		// 	    markerGroup.addLayer(marker);
+      // 	    markerGroup.addLayer(marker);
       //     });
       //     mymap.addLayer(markerGroup);
       //   });
       // }
-
-      $(function() {renderData();})
-
-      var count = 0;
-      $('#mapid').on('click', '#react', function() {
-        count = count+1;
-        $("#counter").html("("+count+")");
-      });
     </script>
   </body>
 </html>
