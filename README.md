@@ -1,8 +1,11 @@
 # crying-at-cu
-An interactive map of Columbia University where users can drop a pin at a place where they have cried in public and write why.
+
+A geospatial storytelling platform for life's emotional moments at Columbia University. Through an interactive map, users can drop a pin at a place where they have cried in public and write why.
+
+The site is live <a href="http://cryingatcu.pythonanywhere.com/">here</a>. Check it out and add your story!
 
 ## Demo
-Install dependencies:
+Install dependencies: 
 ```
 pip install Flask Flask-SQLAlchemy
 ```
